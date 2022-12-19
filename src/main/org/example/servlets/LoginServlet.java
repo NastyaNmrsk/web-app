@@ -1,5 +1,7 @@
 package org.example.servlets;
 
+import org.example.dao.impl.UsersDAO;
+import org.example.model.User;
 import org.example.util.AppConstants;
 
 import javax.servlet.RequestDispatcher;
@@ -25,14 +27,16 @@ public class LoginServlet extends HttpServlet {
 
         String email = req.getParameter("email");
         final String password = req.getParameter("pwd");
-
-        if (email.trim().equalsIgnoreCase(AppConstants.DUMMY_USER_EMAIL) && password.equals(AppConstants.DUMMY_USER_PWD)) {
-            RequestDispatcher rd = req.getRequestDispatcher("welcome");
+        resp.setContentType("text/html");
+        RequestDispatcher rd = req.getRequestDispatcher("login.html");
+        User user = new UsersDAO().getByEmail(email.trim());
+        if (user == null) {
+            resp.getWriter().println("<b>User does not exist. Please <a href = 'registration' Reg></a></b>");
+            rd.include(req, resp);
+        } else if (password.equals(user.getPassword())) {
+            rd = req.getRequestDispatcher("welcome");
             rd.forward(req, resp);
         } else {
-            //include
-            resp.setContentType("text/html");
-            RequestDispatcher rd = req.getRequestDispatcher("login.html");
             resp.getWriter().println("<b>Bad credentials</b>");
             rd.include(req, resp);
         }

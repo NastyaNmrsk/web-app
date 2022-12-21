@@ -12,4 +12,10 @@ public class AppConstants {
     public static final String DB_USER = "root";
     public static final String DB_PASSWORD = "";
     public static final String DB_DRIVER = "com.mysql.cj.jdbc.Driver";
+
+    public static final String MAIL_ACC = "j3021@rambler.ru";
+    public static final String MAIL_PWD = "Java_123";
+
+    public static final String NEW_MAIL_ACC = "rambler12020@rambler.ru";
+    public static final String NEW_MAIL_PWD = "Rambler12020";
 }

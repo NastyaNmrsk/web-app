@@ -31,10 +31,10 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher rd = req.getRequestDispatcher("login.html");
         User user = new UsersDAO().getByEmail(email.trim());
         if (user == null) {
-            resp.getWriter().println("<b>User does not exist. Please <a href = 'registration' Reg></a></b>");
+            resp.getWriter().println("<b>User does not exist. Please <a href = 'registration'> registration</a></b>");
             rd.include(req, resp);
         } else if (password.equals(user.getPassword())) {
-            rd = req.getRequestDispatcher("welcome");
+            rd = req.getRequestDispatcher("Welcome");
             rd.forward(req, resp);
         } else {
             resp.getWriter().println("<b>Bad credentials</b>");

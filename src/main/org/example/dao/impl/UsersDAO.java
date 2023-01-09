@@ -17,7 +17,7 @@ public class UsersDAO extends AbstractDAO<User> {
             pstmt.setString(1, user.getName());
             pstmt.setString(2, user.getEmail());
             pstmt.setString(3, user.getPassword());
-        if( pstmt.executeUpdate()==1){
+        if (pstmt.executeUpdate()==1){
             System.out.println("User was inserted successfully");
             return true;
         }

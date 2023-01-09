@@ -2,6 +2,7 @@ package org.example.servlets;
 
 import org.example.dao.impl.UsersDAO;
 import org.example.model.User;
+import org.example.util.EncryptDecryptUtils;
 import org.example.util.IOUtils;
 import org.example.util.MailUtils;
 
@@ -13,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+import static org.example.util.EncryptDecryptUtils.encrypt;
+
 @WebServlet("/registration")
 public class RegServlet extends HttpServlet {
     private RequestDispatcher rd;
@@ -22,8 +25,8 @@ public class RegServlet extends HttpServlet {
         String name = req.getParameter("name").trim();
         String email = req.getParameter("email").trim();
 
-        String pwd1 = req.getParameter("password1");
-        String pwd2 = req.getParameter("password2");
+        String pwd1 = encrypt(req.getParameter("password1"));
+        String pwd2 = encrypt(req.getParameter("password2"));
 
         RequestDispatcher rd = req.getRequestDispatcher("reg.html");
         resp.setContentType("text/html");

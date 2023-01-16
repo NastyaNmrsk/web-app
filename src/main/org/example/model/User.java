@@ -16,6 +16,6 @@ public class User {
     private Timestamp createdTs;
     private Timestamp updatedTs;
 
-    private Set<Role> role;//TODO populate vio JDBC
-    //private Office office
+    private Set<Role> roles;//TODO populate vio JDBC
+    private Office office;
 }

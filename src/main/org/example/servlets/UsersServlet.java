@@ -22,7 +22,7 @@ public class UsersServlet extends HttpServlet {
         Set<User> all = dao.getAll();
         System.out.println("Users size: " + all.size());
         req.setAttribute("users", all);
-        for (Field f : User.class.getDeclaredField()) {
+        for (Field f : User.class.getDeclaredFields()) {
             f.getName();
         }
         //open jsp and forward users

@@ -3,6 +3,7 @@ package org.example.servlets;
 import org.example.model.User;
 import org.example.util.ServletUtils;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,8 +18,8 @@ public class WelcomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         User user = ServletUtils.getSessionUser(req);
-        resp.getWriter().println("<b> Welcome back, " + (user != null ? user.getName() + "<a href ='logout'> LOGOUT </a>" : "Stranger") + " </b> ");
-    }
+        RequestDispatcher rd = req.getRequestDispatcher("jsp/welcome.jsp");
+        rd.forward(req, resp);}
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

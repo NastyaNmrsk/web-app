@@ -2,7 +2,6 @@ package org.example.servlets;
 
 import org.example.dao.impl.UsersDAO;
 import org.example.model.User;
-import org.example.util.EncryptDecryptUtils;
 import org.example.util.IOUtils;
 import org.example.util.MailUtils;
 

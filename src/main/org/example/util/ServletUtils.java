@@ -2,12 +2,20 @@ package org.example.util;
 
 import org.example.model.User;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.util.Date;
 
 public class ServletUtils {
     public static final String USER = "user";
+    public static void forward(HttpServletRequest request, HttpServletResponse response, String path) throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher(path);
+        rd.forward(request, response);
+    }
 
     public static void saveSessionUser(HttpServletRequest request, User user) {
         HttpSession session = request.getSession();

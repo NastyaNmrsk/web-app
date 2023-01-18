@@ -18,4 +18,13 @@ public class User {
 
     private Set<Role> roles;//TODO populate vio JDBC
     private Office office;
+
+    public boolean getIsActive() {
+        return isActive;
+    }
+
+    public boolean isActive() {
+        return isActive;
+    }
+
 }
